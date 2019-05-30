@@ -1,0 +1,28 @@
+QMAKE_CXX.INCDIRS = \
+    /usr/include/arm-linux-gnueabihf/c++/4.9 \
+    /usr/include/arm-linux-gnueabihf/c++/4.9/backward \
+    /usr/include/arm-linux-gnueabihf \
+    /usr/arm-linux-gnueabihf/include/c++/5 \
+    /usr/arm-linux-gnueabihf/include/c++/5/arm-linux-gnueabihf \
+    /usr/arm-linux-gnueabihf/include/c++/5/backward \
+    /usr/lib/gcc-cross/arm-linux-gnueabihf/5/include \
+    /usr/lib/gcc-cross/arm-linux-gnueabihf/5/include-fixed \
+    /usr/arm-linux-gnueabihf/include \
+    /usr/include/arm-linux-gnueabihf \
+    /usr/include
+QMAKE_CXX.LIBDIRS = \
+    /usr/lib/gcc-cross/arm-linux-gnueabihf/5 \
+    /usr/arm-linux-gnueabihf/lib \
+    /lib/arm-linux-gnueabihf \
+    /lib \
+    /usr/lib/arm-linux-gnueabihf \
+    /usr/lib
+QMAKE_CXX.QT_COMPILER_STDCXX = 199711L
+QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 5
+QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 4
+QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 0
+QMAKE_CXX.COMPILER_MACROS = \
+    QT_COMPILER_STDCXX \
+    QMAKE_GCC_MAJOR_VERSION \
+    QMAKE_GCC_MINOR_VERSION \
+    QMAKE_GCC_PATCH_VERSION
