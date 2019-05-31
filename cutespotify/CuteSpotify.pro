@@ -50,7 +50,7 @@ OTHER_FILES += \
     qml/ArtistDelegate.qml \
     qml/AboutDialog.qml \
     qml/MyMenuItemStyle.qml \
-    qml/MySheet.qml \
+    qml/MySheet.qml l\
     qml/InboxTrackDelegate.qml \
     qml/HeaderSearchField.qml \
     qml/Separator.qml \

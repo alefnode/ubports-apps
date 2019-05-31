@@ -1,25 +1,20 @@
-var css = ["html, body { font-family: Ubuntu !important; background: #141526 !important; color: #9193a8; }",
-        ".speed-results-container.succeeded { color: #fff; }",
-        ".speed-units-container.succeeded { color: #9193a8; }",
-        ".your-speed-message { color: #9193a8; }",
-        ".speed-progress-indicator.succeeded { border-color: #1cbfff; color: #9193a8; }",
-        ".speed-progress-indicator.in-progress > .spinner { box-shadow: 0 .3vh 0 0 #1cbfff; }",
-        ".logo { display: none; }",
-        ".footer-container { display: none; }",
-        ""].join("\n");
+window.addEventListener('readystatechange', oxide_dom, true);
 
-var node = document.createElement("style");
-node.type = "text/css";
-node.appendChild(document.createTextNode(css));
-var heads = document.getElementsByTagName("head");
-if (heads.length > 0) {
-    heads[0].appendChild(node);
-} else {
-    document.documentElement.appendChild(node);
+function oxide_dom() {
+    var w1 = document.createElement('webview');
+    var headerRemoveRule = {
+      conditions: [
+        new chrome.webViewRequest.RequestMatcher()
+      ],
+      actions: [
+        new chrome.webViewRequest.RemoveResponseHeader({
+          name: 'x-robots-tag'
+        })
+      ]
+    };
+
+    // declarative WebRequest API, call before loading webview.
+    w1.request.onRequest.addRules([headerRemoveRule]);
+    w1.src = 'https://jsbin.com/piwakil';
+    document.body.appendChild(w1);
 }
-
-document.getElementsByClassName("share-container")[0].remove();
-document.getElementsByClassName("ookla-container")[0].remove();
-
-document.getElementsByClassName("footer-container")[0].style.display = "none"
-document.getElementsByClassName("logo")[0].style.display = "none"
