@@ -1,0 +1,16 @@
+{
+    "name": "youtube-web.mateo-salta",
+    "description": "description of youtube-morphc",
+
+    "title": "youtube-web",
+    "hooks": {
+        "youtube-web": {
+            "apparmor": "youtube-morphc.apparmor",
+            "desktop":  "youtube-morphc.desktop"
+        }
+    },
+    "version": "2.2.3",
+    "maintainer": "Mateo Salta <mateo_salta@yahoo.com>",
+    "framework" : "ubuntu-sdk-16.04"
+}
+
