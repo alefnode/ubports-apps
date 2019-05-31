@@ -1,0 +1,7 @@
+[Desktop Entry]
+_Name=Qt WebEngine Demo
+Exec=qtwebengine
+Icon=assets/qt-logo.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
