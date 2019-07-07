@@ -1,0 +1,15 @@
+{
+    "name": "alefnode.webexteams",
+    "description": "Webex Teams with Responsive Design",
+
+    "title": "webexteams",
+    "hooks": {
+        "webexteams": {
+            "apparmor": "webexteams.apparmor",
+            "desktop":  "webexteams.desktop"
+        }
+    },
+    "version": "0.0.1",
+    "maintainer": "Adrian Campos <adriancampos@teachelp.com>",
+    "framework" : "ubuntu-sdk-16.04"
+}
