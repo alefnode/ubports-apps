@@ -17,7 +17,7 @@ function main(){
       document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = 'none';
       document.getElementById('app').getElementsByClassName('app two')[0].style.minWidth = 'auto';
 
-      var elems = document.getElementById('app').getElementsByClassName('_3La1s');
+      var elems = document.getElementById("pane-side").getElementsByTagName("DIV");
       for (var i = 0; i<elems.length; i++) {
         elems[i].onclick = function() {
 

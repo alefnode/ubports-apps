@@ -16,7 +16,7 @@ MainView {
   }
   objectName: "mainView"
   theme.name: "Ubuntu.Components.Themes.SuruDark"
-  applicationName: "whatsweb"
+  applicationName: "alefnode.whatsweb"
   backgroundColor : "transparent"
 
   WebEngineView {
