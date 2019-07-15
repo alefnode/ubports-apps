@@ -47,13 +47,14 @@ function main(){
       document.getElementById('app').getElementsByClassName('app two')[0].style.minWidth = 'auto';
 
       window.addEventListener("click", () => {
-        if (document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0]) {
+        if (document.getElementById("app").getElementsByClassName("app two")[0]) {
           document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.flex = "100%";
           document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.WebkitFlex = "100%";
           document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.WebKitFlex = "0%";
           document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.flex = "0%";
           if (document.getElementById("derecha")) { document.getElementById("derecha").style.width = "0%"; }
-        } else if (document.getElementById("app").getElementsByClassName("app three")[0]) {
+        }
+        if (document.getElementById("app").getElementsByClassName("app three")[0]) {
           document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.style.width = "100%";
           document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.id = "derecha";
         }
