@@ -7,17 +7,6 @@
 // ==/UserScript==
 
 
-
-/*
-      html_orig = document.getElementById('app').innerHTML
-      side_orig = document.getElementById('side').innerHTML
-      html = document.getElementById('app')
-      side = document.getElementById('side').parentNode
-      html.innerHTML = side.innerHTML
-			document.getElementById('side').parentNode.style.display = 'block';
-*/
-
-
 window.addEventListener("load", function(event) {
     console.log("Loaded");
     main();
@@ -54,32 +43,32 @@ var checkExist = setInterval(function() {
 
 
 function main(){
-      //document.getElementById('app').getElementsByClassName('_3q4NP _1Iexl')[1].style.display = 'none';
       document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = 'none';
       document.getElementById('app').getElementsByClassName('app two')[0].style.minWidth = 'auto';
+
+      window.addEventListener("click", () => {
+        if (document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0]) {
+          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.flex = "100%";
+          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.WebkitFlex = "100%";
+          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.WebKitFlex = "0%";
+          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.flex = "0%";
+          if (document.getElementById("derecha")) { document.getElementById("derecha").style.width = "0%"; }
+        } else if (document.getElementById("app").getElementsByClassName("app three")[0]) {
+          document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.style.width = "100%";
+          document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.id = "derecha";
+        }
+      });
 
       var elems = document.getElementById("pane-side").getElementsByTagName("DIV");
       for (var i = 0; i<elems.length; i++) {
         elems[i].onclick = function() {
 
-          //document.getElementById('app').getElementsByClassName('_3q4NP _1Iexl')[1].style.display = 'block';
-          //document.getElementById('app').getElementsByClassName('_3q4NP k1feT')[1].style.display = 'none';
           document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = '';
           document.getElementById("app").getElementsByClassName('app two')[0].childNodes[2].style.display = 'none';
-
           menu();
-
-          /*
-          var button = document.createElement("Button");
-          button.innerHTML = 'BACK';
-          button.style = "top:50;left:0;position:absolute;z-index: 9999; -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;box-shadow:inset 0px 1px 0px 0px #ffffff;background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);background-color:#ededed;border:1px solid #dcdcdc;display:inline-block;cursor:pointer;color:#777777;font-family:Arial;font-size:15px;font-weight:bold;padding:6px 8px;text-decoration:none;text-shadow:0px 1px 0px #ffffff;";
-          button.onclick = function() { document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = 'none'; document.getElementById("app").getElementsByClassName('app two')[0].childNodes[2].style.display = 'block'; }
-          document.body.appendChild(button);
-          */
 
         };
       }
-
 }
 
 
