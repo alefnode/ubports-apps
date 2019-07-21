@@ -1,0 +1,7 @@
+[Desktop Entry]
+_Name=BBVA
+Exec=bbva
+Icon=assets/qt-logo.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
