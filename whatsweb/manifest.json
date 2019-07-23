@@ -6,10 +6,11 @@
     "hooks": {
         "whatsweb": {
             "apparmor": "whatsweb.apparmor",
-            "desktop":  "whatsweb.desktop"
+            "desktop":  "whatsweb.desktop",
+            "content-hub": "content-hub.json"
         }
     },
-    "version": "0.0.8",
+    "version": "0.1.0",
     "maintainer": "Adrian Campos <adriancampos@teachelp.com>",
     "framework" : "ubuntu-sdk-16.04"
 }

@@ -4,9 +4,9 @@
          "networking",
          "audio",
          "video",
+         "content_exchange",
+         "content_exchange_source",
          "keep-display-on"
-        
     ],
     "policy_version": 16.04
 }
-

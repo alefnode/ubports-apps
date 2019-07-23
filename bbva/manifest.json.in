@@ -2,7 +2,7 @@
     "name": "bbva.alefnode",
     "description": "A BBVA WebAPP",
     "architecture": "@CLICK_ARCH@",
-    "title": "Qt WebEngine Demo",
+    "title": "BBVA",
     "hooks": {
         "bbva": {
             "apparmor": "bbva.apparmor",

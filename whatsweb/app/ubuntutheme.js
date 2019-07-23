@@ -45,7 +45,9 @@ var checkExist = setInterval(function() {
 function main(){
       document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = 'none';
       document.getElementById('app').getElementsByClassName('app two')[0].style.minWidth = 'auto';
+      document.getElementById('app').getElementsByClassName('app two')[0].style.minHeight = 'auto';
 
+/*
       window.addEventListener("click", () => {
         if (document.getElementById("app").getElementsByClassName("app two")[0]) {
           document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.flex = "100%";
@@ -59,6 +61,7 @@ function main(){
           document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.id = "derecha";
         }
       });
+*/
 
       var elems = document.getElementById("pane-side").getElementsByTagName("DIV");
       for (var i = 0; i<elems.length; i++) {
