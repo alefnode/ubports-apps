@@ -6,7 +6,6 @@
 // @version       0.20150805144242
 // ==/UserScript==
 
-
 window.addEventListener("load", function(event) {
     console.log("Loaded");
     main();
@@ -25,18 +24,23 @@ document.addEventListener('readystatechange', event => {
 
 var check = 0;
 var checkExist = setInterval(function() {
-   if (document.getElementById('app').getElementsByClassName('landing-wrapper').length) {
-  		document.getElementById('app').getElementsByClassName('landing-wrapper')[0].style.minWidth = 'auto';
-			document.getElementById('app').getElementsByClassName('landing-header')[0].style.display = 'none';
-   }
-   if (document.getElementById("app").getElementsByClassName('app two')[0].childNodes.length) {
-      console.log("Exists!");
-      clearInterval(checkExist);
-      if ( check == 0 ) {
-        main();
-
-      }
-      check = 1;
+   if (document.getElementById('app').getElementsByClassName('browser')[0]) {
+       clean();
+       location.reload();
+   } else {
+       if (document.getElementById('app').getElementsByClassName('landing-wrapper').length) {
+      		document.getElementById('app').getElementsByClassName('landing-wrapper')[0].style.minWidth = 'auto';
+    			document.getElementById('app').getElementsByClassName('landing-header')[0].style.display = 'none';
+       }
+       if (document.getElementById("app").getElementsByClassName('app two')[0].childNodes.length) {
+          console.log("Exists!");
+          if ( check == 0 ) {
+            clearInterval(checkExist);
+            clean();
+            main();
+          }
+          check = 1;
+       }
    }
 }, 100);
 
@@ -111,4 +115,13 @@ function menu(){
     check = check + 1;
   }
 
+}
+
+function clean() {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+  for(let registration of registrations) {
+          registration.unregister()
+  }}).catch(function(err) {
+      console.log('Service Worker registration failed: ', err);
+  });
 }
