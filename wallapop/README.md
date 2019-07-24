@@ -1,1 +1,1 @@
-Whatsapp Web with Responsive Design for UBports
+WIP: Wallapop with Responsive Design for Ubuntu Touch

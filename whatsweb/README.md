@@ -1,1 +1,1 @@
-Whatsapp Web with Responsive Design for UBports
+Whatsapp Web with Responsive Design for Ubuntu Touch
