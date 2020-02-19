@@ -44,7 +44,21 @@ var checkExist = setInterval(function() {
    }
 }, 100);
 
-
+window.addEventListener("click", function() {
+  console.log("Click");
+  var check = 0;
+  var checkExist = setInterval(function() {
+    if (document.getElementById("app").getElementsByClassName('app two')[0].childNodes[2].style.display == 'none') {
+      console.log("Exists!");
+      if ( check == 0 ) {
+        clearInterval(checkExist);
+        //clean();
+        menu();
+      }
+      check = 1;
+    }
+  }, 100);
+});
 
 function main(){
       document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = 'none';
