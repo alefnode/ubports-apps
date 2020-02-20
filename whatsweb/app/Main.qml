@@ -21,6 +21,16 @@ MainView {
   //theme.name: "Ubuntu.Components.Themes.SuruDark"
   applicationName: "alefnode.whatsweb"
   backgroundColor : "transparent"
+  anchors {
+    fill: parent
+    bottomMargin: UbuntuApplication.inputMethod.visible ? UbuntuApplication.inputMethod.keyboardRectangle.height/(units.gridUnit / 8) : 0
+    Behavior on bottomMargin {
+        NumberAnimation {
+            duration: 175
+            easing.type: Easing.OutQuad
+        }
+    }
+  }
 
 
   //anchorToKeyboard: true

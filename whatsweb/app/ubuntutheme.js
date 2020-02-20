@@ -6,10 +6,6 @@
 // @version       0.20150805144242
 // ==/UserScript==
 
-//Define variables
-
-var firstclick = 10;
-
 window.addEventListener("load", function(event) {
     console.log("Loaded");
     main();
@@ -62,15 +58,6 @@ window.addEventListener("click", function() {
       check = 1;
     }
   }, 100);
-
-  if (document.getElementsByTagName('FOOTER')[0].getElementsByClassName('focused').length != 0 || firstclick == 1 ) {
-		console.log("Resize Textbox");
-    firstclick = 0;
-    document.getElementById("app").getElementsByClassName('app two')[0].style.height = '60%';
-  } else {
-    document.getElementById("app").getElementsByClassName('app two')[0].style.height = '';
-  }
-
 });
 
 function main(){
@@ -100,7 +87,6 @@ function main(){
 
           document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = '';
           document.getElementById("app").getElementsByClassName('app two')[0].childNodes[2].style.display = 'none';
-          firstclick = 1;
           menu();
 
         };
