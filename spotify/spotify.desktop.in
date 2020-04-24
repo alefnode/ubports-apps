@@ -1,0 +1,7 @@
+[Desktop Entry]
+_Name=Spotify
+Exec=qmlscene %U qml/Main.qml
+Icon=assets/spotify.svg
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
