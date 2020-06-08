@@ -83,6 +83,12 @@ MainView {
             mainPageStack.push(pageMain)
           })
         }
+        onNewViewRequested: {
+            request.action = WebEngineNavigationRequest.IgnoreRequest
+            if(request.userInitiated) {
+                Qt.openUrlExternally(request.requestedUrl)
+            }
+        }
       }
     }
   }
