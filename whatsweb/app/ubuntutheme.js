@@ -32,7 +32,7 @@ var checkExist = setInterval(function() {
       		document.getElementById('app').getElementsByClassName('landing-wrapper')[0].style.minWidth = 'auto';
     			document.getElementById('app').getElementsByClassName('landing-header')[0].style.display = 'none';
        }
-       if (document.getElementById("app").getElementsByClassName('app two')[0].childNodes.length) {
+       if (document.getElementById("app").getElementsByClassName('two')[0].childNodes.length) {
           console.log("Exists!");
           if ( check == 0 ) {
             clearInterval(checkExist);
@@ -48,7 +48,7 @@ window.addEventListener("click", function() {
   console.log("Click");
   var check = 0;
   var checkExist = setInterval(function() {
-    if (document.getElementById("app").getElementsByClassName('app two')[0].childNodes[2].style.display == 'none') {
+    if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
       console.log("Exists!");
       if ( check == 0 ) {
         clearInterval(checkExist);
@@ -61,22 +61,22 @@ window.addEventListener("click", function() {
 });
 
 function main(){
-      document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = 'none';
-      document.getElementById('app').getElementsByClassName('app two')[0].style.minWidth = 'auto';
-      document.getElementById('app').getElementsByClassName('app two')[0].style.minHeight = 'auto';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'none';
+      document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
+      document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
 
 /*
       window.addEventListener("click", () => {
-        if (document.getElementById("app").getElementsByClassName("app two")[0]) {
-          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.flex = "100%";
-          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.WebkitFlex = "100%";
-          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.WebKitFlex = "0%";
-          document.getElementById("app").getElementsByClassName("app two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.flex = "0%";
+        if (document.getElementById("app").getElementsByClassName("two")[0]) {
+          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.flex = "100%";
+          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.WebkitFlex = "100%";
+          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.WebKitFlex = "0%";
+          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.flex = "0%";
           if (document.getElementById("derecha")) { document.getElementById("derecha").style.width = "0%"; }
         }
-        if (document.getElementById("app").getElementsByClassName("app three")[0]) {
-          document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.style.width = "100%";
-          document.getElementById("app").getElementsByClassName("app three")[0].getElementsByTagName("SPAN")[2].parentNode.id = "derecha";
+        if (document.getElementById("app").getElementsByClassName("three")[0]) {
+          document.getElementById("app").getElementsByClassName("three")[0].getElementsByTagName("SPAN")[2].parentNode.style.width = "100%";
+          document.getElementById("app").getElementsByClassName("three")[0].getElementsByTagName("SPAN")[2].parentNode.id = "derecha";
         }
       });
 */
@@ -85,8 +85,8 @@ function main(){
       for (var i = 0; i<elems.length; i++) {
         elems[i].onclick = function() {
 
-          document.getElementById("app").getElementsByClassName('app two')[0].childNodes[3].style.display = '';
-          document.getElementById("app").getElementsByClassName('app two')[0].childNodes[2].style.display = 'none';
+          document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = '';
+          document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
           menu();
 
         };
@@ -120,7 +120,7 @@ function menu(){
     var newHTML         = document.createElement('div');
     newHTML.className += "back_button";
     newHTML.style = "";
-    newHTML.innerHTML   = "<a href='#' onclick=\"document.getElementById('app').getElementsByClassName('app two')[0].childNodes[3].style.display = 'none'; document.getElementById('app').getElementsByClassName('app two')[0].childNodes[2].style.display = 'block'; \"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
+    newHTML.innerHTML   = "<a href='#' onclick=\"document.getElementById('app').getElementsByClassName('two')[0].childNodes[3].style.display = 'none'; document.getElementById('app').getElementsByClassName('two')[0].childNodes[2].style.display = 'block'; \"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
 
     //document.body.appendChild(newHTML);
     var eElement = document.getElementById("app").getElementsByClassName('copyable-area')[0];
