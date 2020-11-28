@@ -62,6 +62,7 @@ window.addEventListener("click", function() {
 
 function main(){
       document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'none';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';
       document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
       document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
 
