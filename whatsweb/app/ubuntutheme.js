@@ -89,6 +89,7 @@ function main(){
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = '';
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = '';
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
+          document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = 'none';
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[2].style.width = '100%';
           menu();
 
@@ -123,7 +124,7 @@ function menu(){
     var newHTML         = document.createElement('div');
     newHTML.className += "back_button";
     newHTML.style = "";
-    newHTML.innerHTML   = "<a href='#' onclick=\"document.getElementById('app').getElementsByClassName('two')[0].childNodes[3].style.display = 'none'; document.getElementById('app').getElementsByClassName('two')[0].childNodes[2].style.display = 'block';document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none'; document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[2].style.width = ''; \"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
+    newHTML.innerHTML   = "<a href='#' onclick=\"document.getElementById('app').getElementsByClassName('two')[0].childNodes[3].style.display = 'none'; document.getElementById('app').getElementsByClassName('two')[0].childNodes[2].style.display = 'block';document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[2].style.width = ''; document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = '';\"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
 
     var eElement = document.getElementById("main").childNodes[1];
     eElement.insertBefore(newHTML, eElement.firstChild);
