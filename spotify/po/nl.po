@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the spotify.alefnode package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: spotify.alefnode\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-24 14:50+0000\n"
+"PO-Revision-Date: 2021-11-06 14:13+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: ../qml/Installation.qml:31 ../qml/MainPage.qml:49
+msgid "Installation"
+msgstr "Installatie"
+
+#: ../qml/Installation.qml:41
+msgid "Libertine"
+msgstr "Libertine"
+
+#: ../qml/Installation.qml:55
+msgid "Mopidy"
+msgstr "Mopidy"
+
+#: ../qml/Installation.qml:70 ../qml/MainPage.qml:35 spotify.desktop.in.h:1
+msgid "Spotify"
+msgstr "Spotify"
+
+#: ../qml/Installation.qml:86
+msgid "Installation Status"
+msgstr "Installatiestatus"
+
+#: ../qml/Installation.qml:90
+msgid "Libertine [~ 30min]"
+msgstr "Libertine [~ 30 min.]"
+
+#: ../qml/Installation.qml:100
+msgid "Mopidy [~ 2min]"
+msgstr "Mopidy [~ 2 min.]"
+
+#: ../qml/Installation.qml:110
+msgid "Spotify [~ 2min]"
+msgstr "Spotify [~ 2min.]"
+
+#: ../qml/MainPage.qml:41 ../qml/SettingsPage.qml:9
+msgid "Settings"
+msgstr "Instellingen"
+
+#: ../qml/SettingsPage.qml:20
+msgid "Vibration"
+msgstr "Trillen"
+
+#: ../qml/SettingsPage.qml:29
+msgid "Sound"
+msgstr "Geluid afspelen"
