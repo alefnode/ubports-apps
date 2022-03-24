@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=WhatsWeb
 Comment=Whatsapp with Responsive
-Exec=qmlscene %u app/Main.qml  --scaling --multisample --gles --fullscreen --disable-gpu
+Exec=qmlscene %u app/Main.qml  --scaling --multisample --gles --disable-gpu
 Terminal=false
 Type=Application
 Icon=icon.png
