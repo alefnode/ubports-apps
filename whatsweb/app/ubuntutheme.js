@@ -57,7 +57,6 @@ window.addEventListener("click", function() {
       }
       check = 1;
     }
-  disablenotifications();
   }, 100);
 });
 
@@ -78,6 +77,8 @@ function main(){
 
         };
       }
+  
+      disablenotifications();
 }
 
 
@@ -118,13 +119,15 @@ function menu(){
 }
 
 function disablenotifications(){
-  // Dissable update notification
+  // Dissable update available notification
   if (document.querySelector('span[data-icon="alert-update"]')) {
     document.querySelector('span[data-icon="alert-update"]').parentElement.parentElement.style.display = 'none';
+    console.log("Disabled update available notification");
   }
   // Disable request to allow notifications
   if (document.querySelector('span[data-icon="alert-notification"]')) {
     document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none'; 
+    console.log("Disabled request allow notification");
   }
 }
 
