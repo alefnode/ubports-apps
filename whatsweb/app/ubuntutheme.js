@@ -57,6 +57,7 @@ window.addEventListener("click", function() {
       }
       check = 1;
     }
+  disablenotifications();
   }, 100);
 });
 
@@ -65,22 +66,6 @@ function main(){
       document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';
       document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
       document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
-
-/*
-      window.addEventListener("click", () => {
-        if (document.getElementById("app").getElementsByClassName("two")[0]) {
-          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.flex = "100%";
-          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[0].parentNode.style.WebkitFlex = "100%";
-          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.WebKitFlex = "0%";
-          document.getElementById("app").getElementsByClassName("two")[0].getElementsByClassName("o_uNe")[1].parentNode.style.flex = "0%";
-          if (document.getElementById("derecha")) { document.getElementById("derecha").style.width = "0%"; }
-        }
-        if (document.getElementById("app").getElementsByClassName("three")[0]) {
-          document.getElementById("app").getElementsByClassName("three")[0].getElementsByTagName("SPAN")[2].parentNode.style.width = "100%";
-          document.getElementById("app").getElementsByClassName("three")[0].getElementsByTagName("SPAN")[2].parentNode.id = "derecha";
-        }
-      });
-*/
 
       var elems = document.getElementById("pane-side").getElementsByTagName("DIV");
       for (var i = 0; i<elems.length; i++) {
@@ -130,6 +115,17 @@ function menu(){
     check = check + 1;
   }
 
+}
+
+function disablenotifications(){
+  // Dissable update notification
+  if (document.querySelector('span[data-icon="alert-update"]')) {
+    document.querySelector('span[data-icon="alert-update"]').parentElement.parentElement.style.display = 'none';
+  }
+  // Disable request to allow notifications
+  if (document.querySelector('span[data-icon="alert-notification"]')) {
+    document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none'; 
+  }
 }
 
 function clean() {
