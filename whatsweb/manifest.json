@@ -1,6 +1,6 @@
 {
     "name": "alefnode.whatsweb",
-    "description": "Whatsapp with Responsive Desing",
+    "description": "WhatsApp client with Responsive Design.",
     "architecture": "@CLICK_ARCH@",
 
     "title": "whatsweb",
