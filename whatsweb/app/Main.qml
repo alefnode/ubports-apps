@@ -89,6 +89,9 @@ MainView {
                 Qt.openUrlExternally(request.requestedUrl)
             }
         }
+        onFeaturePermissionRequested: {
+	    grantFeaturePermission(securityOrigin, feature, true);
+        }
       }
     }
   }
