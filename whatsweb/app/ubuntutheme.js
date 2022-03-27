@@ -46,6 +46,7 @@ var checkExist = setInterval(function() {
 
 window.addEventListener("click", function() {
   console.log("Click");
+  
   var check = 0;
   var checkExist = setInterval(function() {
     if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
@@ -62,6 +63,8 @@ window.addEventListener("click", function() {
     attachresponsive();
   } else if (document.querySelector('[data-animate-dropdown-item]')){
     modaldialogresponsive();
+  } else if (document.querySelector('[data-testid="contact-list-key"]')){
+    startnewchat();
   }
   
 });
@@ -181,6 +184,20 @@ function modaldialogresponsive(){
   }
 }
 
+function startnewchat(){
+  console.log("Test")
+  var elems = document.querySelector('[data-testid="contact-list-key"]').getElementsByTagName("DIV");
+  for (var i = 0; i<elems.length; i++) {
+    elems[i].onclick = function() {
+
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = '';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = '';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
+      menu();
+
+    };
+  }
+}
 
 function clean() {
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
