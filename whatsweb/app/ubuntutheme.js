@@ -42,25 +42,35 @@ var checkExist = setInterval(function() {
           check = 1;
        }
    }
-}, 100);
+}, 200);
 
 window.addEventListener("click", function() {
   console.log("Click");
+  
   var check = 0;
   var checkExist = setInterval(function() {
     if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
       console.log("Exists!");
       if ( check == 0 ) {
         clearInterval(checkExist);
-        //clean();
         menu();
       }
       check = 1;
     }
-  }, 100);
+  }, 200);
+  
+  if (document.querySelector('span[data-icon="attach-image"]')){
+    attachresponsive();
+  } else if (document.querySelector('[data-animate-dropdown-item]')){
+    modaldialogresponsive();
+  } else if (document.querySelector('[data-testid="contact-list-key"]')){
+    startnewchat();
+  }
+  
 });
 
 function main(){
+      console.log("Call main function")
       document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'none';
       document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';
       document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
@@ -84,7 +94,7 @@ function main(){
 
 function menu(){
 
-
+  console.log("Call menu function")
   function addCss(cssString) {
       var head = document.getElementsByTagName('head')[0];
       var newCss = document.createElement('style');
@@ -108,7 +118,10 @@ function menu(){
     var newHTML         = document.createElement('div');
     newHTML.className += "back_button";
     newHTML.style = "";
-    newHTML.innerHTML   = "<a href='#' onclick=\"document.getElementById('app').getElementsByClassName('two')[0].childNodes[3].style.display = 'none'; document.getElementById('app').getElementsByClassName('two')[0].childNodes[2].style.display = 'block'; document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none'; \"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
+    newHTML.innerHTML   = "<a href='#' onclick=\"document.getElementById('app').getElementsByClassName('two')[0].childNodes[3].style.display = 'none';\
+                                                 document.getElementById('app').getElementsByClassName('two')[0].childNodes[2].style.display = 'block';\
+                                                 document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';\
+                          \"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
 
     var eElement = document.getElementById("main").childNodes[1];
     eElement.insertBefore(newHTML, eElement.firstChild);
@@ -119,7 +132,7 @@ function menu(){
 }
 
 function disablenotifications(){
-  // Dissable update available notification
+  // Disable update available notification
   if (document.querySelector('span[data-icon="alert-update"]')) {
     document.querySelector('span[data-icon="alert-update"]').parentElement.parentElement.style.display = 'none';
     console.log("Disabled update available notification");
@@ -128,6 +141,61 @@ function disablenotifications(){
   if (document.querySelector('span[data-icon="alert-notification"]')) {
     document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none'; 
     console.log("Disabled request allow notification");
+  }
+}
+
+function attachresponsive(){
+  if (document.querySelector('span[data-icon="attach-image"]')){
+    var check = 0;
+    var checkExist = setInterval(function() {
+     	if (document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].children[0].children.length > 0) {
+       	// Hide chat to resize attach image panel
+      	document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = 'none';
+        document.getElementById('app').getElementsByClassName('two')[0].querySelector("input").parentElement.style.minWidth = "0px";
+        
+      	if ( check == 0 ) {
+        	clearInterval(checkExist);
+        }
+      }
+      check = 1;
+  	}, 500);
+	} else {
+    document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = '';
+    document.getElementById('app').getElementsByClassName('two')[0].querySelector("input").parentElement.style.minWidth = "";
+  }
+}
+
+function modaldialogresponsive(){
+  if (document.querySelector('[data-animate-dropdown-item]')){
+    var check = 0;
+    var checkExist = setInterval(function() {
+     	if (document.querySelector("[data-animate-modal-backdrop]")) {
+       	// Delete min-width class to center dialog message
+      	document.querySelector("[data-animate-modal-backdrop]").childNodes[0].style.minWidth = "0px";
+        
+      	if ( check == 0 ) {
+        	clearInterval(checkExist);
+        }
+      }
+      check = 1;
+  	}, 300);
+	} else {
+    document.querySelector("[data-animate-modal-backdrop]").childNodes[0].style.minWidth = "";
+  }
+}
+
+function startnewchat(){
+  console.log("Test")
+  var elems = document.querySelector('[data-testid="contact-list-key"]').getElementsByTagName("DIV");
+  for (var i = 0; i<elems.length; i++) {
+    elems[i].onclick = function() {
+
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = '';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = '';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
+      menu();
+
+    };
   }
 }
 
