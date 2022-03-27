@@ -42,7 +42,7 @@ var checkExist = setInterval(function() {
           check = 1;
        }
    }
-}, 100);
+}, 200);
 
 window.addEventListener("click", function() {
   console.log("Click");
@@ -57,7 +57,13 @@ window.addEventListener("click", function() {
       check = 1;
     }
   }, 200);
-  attachresponsive();
+  
+  if (document.querySelector('span[data-icon="attach-image"]')){
+    attachresponsive();
+  } else if (document.querySelector('[data-animate-dropdown-item]')){
+    modaldialogresponsive();
+  }
+  
 });
 
 function main(){
@@ -79,7 +85,7 @@ function main(){
         };
       }
   
-  		disablenotifications();
+      disablenotifications();
 }
 
 
@@ -142,6 +148,8 @@ function attachresponsive(){
      	if (document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].children[0].children.length > 0) {
        	// Hide chat to resize attach image panel
       	document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = 'none';
+        document.getElementById('app').getElementsByClassName('two')[0].querySelector("input").parentElement.style.minWidth = "0px";
+        
       	if ( check == 0 ) {
         	clearInterval(checkExist);
         }
@@ -150,6 +158,26 @@ function attachresponsive(){
   	}, 500);
 	} else {
     document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = '';
+    document.getElementById('app').getElementsByClassName('two')[0].querySelector("input").parentElement.style.minWidth = "";
+  }
+}
+
+function modaldialogresponsive(){
+  if (document.querySelector('[data-animate-dropdown-item]')){
+    var check = 0;
+    var checkExist = setInterval(function() {
+     	if (document.querySelector("[data-animate-modal-backdrop]")) {
+       	// Delete min-width class to center dialog message
+      	document.querySelector("[data-animate-modal-backdrop]").childNodes[0].style.minWidth = "0px";
+        
+      	if ( check == 0 ) {
+        	clearInterval(checkExist);
+        }
+      }
+      check = 1;
+  	}, 300);
+	} else {
+    document.querySelector("[data-animate-modal-backdrop]").childNodes[0].style.minWidth = "";
   }
 }
 
