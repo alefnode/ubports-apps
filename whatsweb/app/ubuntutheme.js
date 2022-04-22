@@ -6,6 +6,12 @@
 // @version       0.20150805144242
 // ==/UserScript==
 
+// Declare variables
+updatenotificacion = 0;
+allownotification = 0;
+
+
+// Listeners to startup APP
 window.addEventListener("load", function(event) {
     console.log("Loaded");
     main();
@@ -22,31 +28,77 @@ document.addEventListener('readystatechange', event => {
     }
 });
 
+// First resize after loading the web
 var check = 0;
 var checkExist = setInterval(function() {
-   if (document.getElementById('app').getElementsByClassName('browser')[0]) {
-       clean();
-       location.reload();
-   } else {
-       if (document.getElementById('app').getElementsByClassName('landing-wrapper').length) {
-      		document.getElementById('app').getElementsByClassName('landing-wrapper')[0].style.minWidth = 'auto';
-    			document.getElementById('app').getElementsByClassName('landing-header')[0].style.display = 'none';
-       }
-       if (document.getElementById("app").getElementsByClassName('two')[0].childNodes.length) {
-          console.log("Exists!");
-          if ( check == 0 ) {
-            clearInterval(checkExist);
-            clean();
-            main();
-          }
-          check = 1;
-       }
-   }
+  if (document.getElementById('app').getElementsByClassName('browser')[0]) {
+    clean();
+    location.reload();
+  } else {
+    if (document.getElementById('app').getElementsByClassName('landing-wrapper').length) {
+      document.getElementById('app').getElementsByClassName('landing-wrapper')[0].style.minWidth = 'auto';
+      document.getElementById('app').getElementsByClassName('landing-header')[0].style.display = 'none';
+    }
+    if (document.getElementById("app").getElementsByClassName('two')[0].childNodes.length) {
+      console.log("Exists!");
+      if ( check == 0 ) {
+        clearInterval(checkExist);
+        clean();
+        main();
+      }
+      check = 1;
+    }
+  }
 }, 200);
 
+// Analize JS after every click on APP and execute Actions
 window.addEventListener("click", function() {
   console.log("Click");
-  
+
+  if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
+    navigation();
+  }
+
+  if (document.querySelector('span[data-icon="attach-image"]')){
+    attachresponsive();
+  } else if (document.querySelector('[data-animate-dropdown-item]')){
+    modaldialogresponsive();
+  } else if (document.querySelector('[data-testid="contact-list-key"]')){
+    startnewchat();
+  }
+
+  if (updatenotificacion == 0 || allownotification == 0){
+    disablenotifications();
+  }
+
+});
+
+// Define all the functions to work on it
+function main(){
+  console.log("Call main function")
+  document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'none';
+  document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';
+  document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
+  document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
+
+  var elems = document.getElementById("pane-side").getElementsByTagName("DIV");
+  for (var i = 0; i<elems.length; i++) {
+    elems[i].onclick = function() {
+
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = '';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = '';
+      document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
+      menu();
+
+    };
+  }
+
+  disablenotifications();
+
+}
+
+
+function navigation() {
   var check = 0;
   var checkExist = setInterval(function() {
     if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
@@ -58,39 +110,7 @@ window.addEventListener("click", function() {
       check = 1;
     }
   }, 200);
-  
-  if (document.querySelector('span[data-icon="attach-image"]')){
-    attachresponsive();
-  } else if (document.querySelector('[data-animate-dropdown-item]')){
-    modaldialogresponsive();
-  } else if (document.querySelector('[data-testid="contact-list-key"]')){
-    startnewchat();
-  }
-  
-});
-
-function main(){
-      console.log("Call main function")
-      document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'none';
-      document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';
-      document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
-      document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
-
-      var elems = document.getElementById("pane-side").getElementsByTagName("DIV");
-      for (var i = 0; i<elems.length; i++) {
-        elems[i].onclick = function() {
-
-          document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = '';
-          document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = '';
-          document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
-          menu();
-
-        };
-      }
-  
-      disablenotifications();
 }
-
 
 function menu(){
 
@@ -136,11 +156,13 @@ function disablenotifications(){
   if (document.querySelector('span[data-icon="alert-update"]')) {
     document.querySelector('span[data-icon="alert-update"]').parentElement.parentElement.style.display = 'none';
     console.log("Disabled update available notification");
+    updatenotification = 1;
   }
   // Disable request to allow notifications
   if (document.querySelector('span[data-icon="alert-notification"]')) {
-    document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none'; 
+    document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none';
     console.log("Disabled request allow notification");
+    allownotification = 1;
   }
 }
 
@@ -152,7 +174,7 @@ function attachresponsive(){
        	// Hide chat to resize attach image panel
       	document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.display = 'none';
         document.getElementById('app').getElementsByClassName('two')[0].querySelector("input").parentElement.style.minWidth = "0px";
-        
+
       	if ( check == 0 ) {
         	clearInterval(checkExist);
         }
@@ -172,7 +194,7 @@ function modaldialogresponsive(){
      	if (document.querySelector("[data-animate-modal-backdrop]")) {
        	// Delete min-width class to center dialog message
       	document.querySelector("[data-animate-modal-backdrop]").childNodes[0].style.minWidth = "0px";
-        
+
       	if ( check == 0 ) {
         	clearInterval(checkExist);
         }
@@ -185,7 +207,6 @@ function modaldialogresponsive(){
 }
 
 function startnewchat(){
-  console.log("Test")
   var elems = document.querySelector('[data-testid="contact-list-key"]').getElementsByTagName("DIV");
   for (var i = 0; i<elems.length; i++) {
     elems[i].onclick = function() {
