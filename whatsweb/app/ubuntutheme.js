@@ -78,6 +78,7 @@ function main(){
   console.log("Call main function")
   document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'none';
   document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';
+  document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.minWidth = "100%"
   document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
   document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
 
