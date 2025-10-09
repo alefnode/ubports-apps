@@ -5,7 +5,6 @@ on:
   pull_request:
     branches: [ "master" ]
 jobs:
-  # TRABAJO 1: Construir la aplicación (igual que antes)
   build:
     runs-on: ubuntu-latest
     steps:
