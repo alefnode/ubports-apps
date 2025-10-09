@@ -1,35 +1,52 @@
-name: Build Whatsweb Click Package
-# Se activa con cada push a la rama 'master'
+name: Build and Publish Whatsweb
 on:
   push:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 jobs:
+  # TRABAJO 1: Construir la aplicación (igual que antes)
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1. Clona tu repositorio en el corredor de GitHub
       - name: Checkout repository
         uses: actions/checkout@v3
-      # 2. Configura Docker para usar 'clickable'
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
-      # 3. Construye la aplicación con 'clickable'
-      # Se especifica que el proyecto está en la carpeta 'whatsweb'
       - name: Build Click Package
         run: |
           docker run \
             -v $(pwd)/whatsweb:/app \
             clickable/clickable:latest \
             --project-dir=/app
-      # 4. Sube el paquete .click como un artefacto
-      # Busca el archivo .click dentro de la carpeta de compilación de 'whatsweb'
       - name: Upload .click Artifact
         uses: actions/upload-artifact@v3
         with:
           name: whatsweb-click-package
           path: whatsweb/build/**/*.click
+  publish:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download .click Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: whatsweb-click-package
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install openstore-cli
+        run: pip install openstore-cli
+      - name: Upload to OpenStore
+        env:
+          OPENSTORE_API_KEY: ${{ secrets.OPENSTORE_TOKEN }}
+        run: |
+          CLICK_FILE=$(find . -name "*.click")
+          echo "Uploading $CLICK_FILE to the OpenStore..."
+          openstore-cli upload $CLICK_FILE --yes
