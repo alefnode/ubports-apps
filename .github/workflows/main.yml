@@ -1,10 +1,10 @@
 name: Build Whatsweb Click Package
-# Se activa con cada push a la rama 'main'
+# Se activa con cada push a la rama 'master'
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 jobs:
   build:
     runs-on: ubuntu-latest
