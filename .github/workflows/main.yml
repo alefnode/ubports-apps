@@ -1,0 +1,35 @@
+name: Build Whatsweb Click Package
+# Se activa con cada push a la rama 'main'
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Clona tu repositorio en el corredor de GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      # 2. Configura Docker para usar 'clickable'
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      # 3. Construye la aplicación con 'clickable'
+      # Se especifica que el proyecto está en la carpeta 'whatsweb'
+      - name: Build Click Package
+        run: |
+          docker run \
+            -v $(pwd)/whatsweb:/app \
+            clickable/clickable:latest \
+            --project-dir=/app
+      # 4. Sube el paquete .click como un artefacto
+      # Busca el archivo .click dentro de la carpeta de compilación de 'whatsweb'
+      - name: Upload .click Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: whatsweb-click-package
+          path: whatsweb/build/**/*.click

@@ -51,11 +51,11 @@ var checkExist = setInterval(function() {
 // Analize JS after every click on APP and execute Actions
 window.addEventListener("click", function() {
   console.log("Click");
-  
+
   //if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
   //  navigation();
   //}
-	
+
   // First if to resize when sending a file/image/video/document
   if (document.querySelector('input[accept="image/*,video/mp4,video/3gpp,video/quicktime"]')){
     console.log("Adjust attachment width");
@@ -68,7 +68,7 @@ window.addEventListener("click", function() {
     document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.minWidth = "100%";
     document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.flex= "0 0 45%";
     document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.minWidth = "";
-  } 
+  }
 
   if (document.getElementById("app").getElementsByClassName('three')[0] !== undefined){
     if (document.getElementById("app").getElementsByClassName('three')[0].childNodes[5] !== undefined){
@@ -82,12 +82,12 @@ window.addEventListener("click", function() {
       restoreinchatcontactandgroupinfo();
     }
   }
-  
-  
+
+
   if (updatenotificacion == 0 || allownotification == 0){
     disablenotifications();
   }
-  
+
 });
 
 // Define all the functions to work on it
@@ -99,7 +99,7 @@ function main(){
   document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.minWidth = "90%"
   document.getElementById('app').getElementsByClassName('two')[0].style.minWidth = 'auto';
   document.getElementById('app').getElementsByClassName('two')[0].style.minHeight = 'auto';
-  
+
   // Resize Profile and Settings menu
   //document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[0].style.minWidth = "90%"
 
@@ -116,7 +116,7 @@ function main(){
     }
   });
   disablenotifications();
-  
+
 }
 
 
@@ -131,7 +131,7 @@ function navigation() {
       }
       check = 1;
     }
-  }, 200); 
+  }, 200);
 }
 
 function menu(){
@@ -144,7 +144,7 @@ function menu(){
       newCss.innerHTML = cssString;
       head.appendChild(newCss);
   }
-  
+
   function addJS(jsString) {
       var head = document.getElementsByTagName('head')[0];
       var newJS = document.createElement('script');
@@ -155,7 +155,7 @@ function menu(){
   check = 0;
   if ( check == 0 ) {
     addCss(".back_button span { display:block; height: 100%; width: 100%;}.back_button { position: absolute; left: 0; z-index:200; width:60px; height:45px; display:-webkit-flex; display:flex; -webkit-align-items:center; align-items:center; -webkit-justify-content:center; justify-content:center } html[dir] .back_button { border-radius:50%; } html[dir=ltr] .back_button { right:11px } html[dir=rtl] .back_button { left:11px } .back_button path { fill:#93999c; fill-opacity:1 } .svg_back { transform: rotate(90deg); height: 100%;}");
-    
+
   	addJS('window.onscroll = function() {myFunction()}; var navbar = document.getElementById("navbar"); var sticky = navbar.offsetTop; function myFunction() { if (window.pageYOffset >= sticky) { navbar.classList.add("sticky") } else { navbar.classList.remove("sticky"); } } ');
 
     var newHTML         = document.createElement('div');
@@ -166,7 +166,7 @@ function menu(){
 
     var eElement = document.getElementById("main").childNodes[1];
     eElement.insertBefore(newHTML, eElement.firstChild);
-    
+
     check = check + 1;
   }
 
@@ -174,7 +174,7 @@ function menu(){
 
 function showchatlist(){
   document.getElementById("app").getElementsByClassName('two')[0].childNodes[3].style.display = 'block';
-  document.getElementById("app").getElementsByClassName('two')[0].childNodes[4].style.display = 'none'; 
+  document.getElementById("app").getElementsByClassName('two')[0].childNodes[4].style.display = 'none';
 }
 
 function disablenotifications(){
@@ -186,7 +186,7 @@ function disablenotifications(){
   }
   // Disable request to allow notifications
   if (document.querySelector('span[data-icon="alert-notification"]')) {
-    document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none'; 
+    document.querySelector('span[data-icon="alert-notification"]').parentElement.parentElement.style.display = 'none';
     console.log("Disabled request allow notification");
     allownotification = 1;
   }
@@ -199,7 +199,7 @@ function modaldialogresponsive(){
      	if (document.querySelector("[data-animate-modal-backdrop]")) {
        	// Delete min-width class to center dialog message
       	document.querySelector("[data-animate-modal-backdrop]").childNodes[0].style.minWidth = "0px";
-        
+
       	if ( check == 0 ) {
         	clearInterval(checkExist);
         }
@@ -236,7 +236,7 @@ function inchatcontactandgroupinfo(){
   console.log("inchatcontactandgroupinfo")
   if (document.getElementById("app").getElementsByClassName('three')[0].childNodes[5]){
       document.getElementById("app").getElementsByClassName('three')[0].childNodes[5].style.width = "90%";
-      document.getElementById("app").getElementsByClassName('three')[0].childNodes[5].style.maxWidth = "100%"; 
+      document.getElementById("app").getElementsByClassName('three')[0].childNodes[5].style.maxWidth = "100%";
   }
 }
 function restoreinchatcontactandgroupinfo(){
@@ -244,7 +244,7 @@ function restoreinchatcontactandgroupinfo(){
   if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[5] !== null){
     document.getElementById("app").getElementsByClassName('two')[0].childNodes[5].style.width = "";
     document.getElementById("app").getElementsByClassName('two')[0].childNodes[5].style.maxWidth = "";
-  }  
+  }
 }
 function clean() {
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
