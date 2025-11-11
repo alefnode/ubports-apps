@@ -14,7 +14,7 @@
       "push-helper": "whatsweb-push-helper.json"
     }
   },
-  "version": "0.3.3",
+  "version": "0.3.4",
   "maintainer": "Adrian Campos <adriancampos@teachelp.com>",
   "framework": "ubuntu-sdk-20.04"
 }

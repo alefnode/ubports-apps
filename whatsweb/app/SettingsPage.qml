@@ -39,8 +39,8 @@ Page {
 
         property int webviewWidthPortait: 410
         property int webviewWidthLandscape: 900        
-        property int textFontSize: 110
-        property int spanFontSize: 104
+        property int textFontSize: 106
+        property int spanFontSize: 107
 
         property bool enableDesktopNotifications: true
         property bool enableTitleChangeNotifications: true
@@ -131,10 +131,10 @@ Page {
                 webviewWidthPortait.value = 410
                 config.webviewWidthLandscape = 900
                 webviewWidthLandscape.value = 900
-                config.textFontSize = 110
-                textFontSize.value = 110
-                config.spanFontSize = 104
-                spanFontSize.value = 104
+                config.textFontSize = 106
+                textFontSize.value = 106
+                config.spanFontSize = 107
+                spanFontSize.value = 107
 
                 config.enableDesktopNotifications = true
                 enableDesktopNotifications.checked = true

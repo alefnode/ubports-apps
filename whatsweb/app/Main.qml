@@ -29,8 +29,8 @@ MainView {
 
         property int webviewWidthPortait: 410
         property int webviewWidthLandscape: 900
-        property int textFontSize: 110
-        property int spanFontSize: 104
+        property int textFontSize: 106
+        property int spanFontSize: 107
 
         property bool enableDesktopNotifications: true
         property bool enableTitleChangeNotifications: true
@@ -42,8 +42,19 @@ MainView {
 
         property bool enableQuickCopy: true
         property bool enableGpu: true
+        
+        property int updateRevision: 0;
     }
     
+ Component.onCompleted: {
+   if (config.updateRevision != 1)
+   {
+    config.textFontSize=106
+    config.spanFontSize=107
+    config.updateRevision=1;
+   }
+   
+ }
  DownloadHelper {
         id: downloadHelper
         blob_path: localStorage+"/IndexedDB/https_web.whatsapp.com_0.indexeddb.blob/"

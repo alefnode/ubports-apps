@@ -72,10 +72,10 @@ const X = {
       chatListHeader: () => document.querySelector('.two').childNodes[4].querySelector('header').querySelector('header'),
     chatWindow: () => document.querySelector('.two').childNodes[5],
       chatHeader: () => document.querySelector('.two').childNodes[5].querySelector('header'),
+    contactInfo: () => document.querySelector('.two').childNodes[6],
   //-------------------------------------------------------------------------------------------
 
   upperWrapper: () => document.querySelector('.three'),
-    contactInfo: () => document.querySelector('.two').childNodes[6],
       
   leftMenu: () => document.querySelector('header'),
 
@@ -121,7 +121,8 @@ function main(){
         addCss(".message-out {  padding-right: 20px !important; }");
         addCss(".message-in {  padding-left: 20px !important; }");  
         addCss("span { font-size: "+window.appConfig.spanFontSize+"% !important; }");    
-        addCss(".selectable-text { font-size: "+window.appConfig.textFontSize+"% !important; }"); 
+        addCss(".copyable-text { font-size: "+window.appConfig.textFontSize+"% !important; }");         
+        addCss(".html-span { font-size: 96% !important; }");
     } catch (e) { console.log("Error while applying css: "+e) }
 
   
@@ -131,9 +132,14 @@ function main(){
   X.chatWindow().style.minWidth = "100%" 
   X.chatWindow().style.maxWidth = "100%"  
   X.chatWindow().style.width = "100%"   
-   X.mainWrapper().style.minWidth = 'auto';
-   X.mainWrapper().style.minHeight = 'auto';
-      X.unkownSection1().style.borderInlineStartWidth = "0" ;
+  X.mainWrapper().style.minWidth = 'auto';
+  X.mainWrapper().style.minHeight = 'auto';
+  X.unkownSection1().style.borderInlineStartWidth = "0" ;
+  
+  // Handle contactInfo Openned panel
+  if (X.contactInfo() !== undefined){
+        inchatcontactandgroupinfo();
+  }
       
    //--------------------------------------------------------------
    // SECTION2.1 Avoid opening the keyboard when entering a chat
@@ -204,13 +210,6 @@ function main(){
       X.dialog().style.minWidth="100%"
       X.dialog().firstChild.classList.add('customDialog')
     }
-  
-    // Handle contactInfo Openned panel
-    if (X.upperWrapper() !== undefined){
-      if (X.contactInfo() !== undefined){
-        inchatcontactandgroupinfo();
-      }
-    }
     
     backupBackButton()
     
@@ -245,17 +244,26 @@ window.addEventListener("click", function() {
         showchatWindow();
   
   setTimeout( () => {
-
   calculateSecondaryChatWindowOpen();
-  
+  },5);
+  setTimeout( () => {
   //(Re)-enable content Editable ( If it was disabled when "OnFocus" was called without click)
-  if ( lastClickEl.closest('.contenteditableDisabled')  )
+  if ( lastClickEl.closest('.contenteditableDisabled') !== null  )
   {
+    var editableEl=lastClickEl.closest('.contenteditableDisabled');
     lastClickEl.closest('.contenteditableDisabled').setAttribute('contenteditable', true);
     lastClickEl.closest('.contenteditableDisabled').classList.remove('contenteditableDisabled') 
+    editableEl.focus();
   }
-  needToShowChatWindow=0;
+  if ( lastClickEl.querySelector('.contenteditableDisabled') !== null  )
+  {
+    var editableEl=lastClickEl.querySelector('.contenteditableDisabled');
+    lastClickEl.querySelector('.contenteditableDisabled').setAttribute('contenteditable', true);
+    lastClickEl.querySelector('.contenteditableDisabled').classList.remove('contenteditableDisabled') 
+    editableEl.focus();
+  }
   },5);
+  
 }); 
 
 
@@ -344,6 +352,12 @@ function showchatWindow(){
     X.uploadPannel().style.width="100%";
     X.uploadPannel().style.minWidth="100%";   
     X.leftSettingPannel().style.display="none"; 
+    
+    // Handle contactInfo Openned panel
+    if (X.contactInfo() !== undefined){
+        inchatcontactandgroupinfo();
+    }
+  
     addBackButtonToChatViewWithTimeout();
 }
 
@@ -599,7 +613,6 @@ updatenotificacion = 0;
 allownotification = 0;
 var lastClickEl=null;
 var lastFocusEl=null;
-var needToShowChatWindow=0;
 var firstChatLoad=1;
 
   function addCss(cssString) {
